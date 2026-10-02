@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
@@ -63,9 +63,15 @@ class _SplashScreenState extends State<SplashScreen> {
                   'Logo.png',
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) {
-                    return ImageErrorDebugWidget(
-                      imagePath: 'Logo.png',
-                      errorDetails: error.toString(),
+                    return const Center(
+                      child: Text(
+                        'CARCOS',
+                        style: TextStyle(
+                          color: Color(0xFF62B5E5),
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -114,23 +120,29 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
               ),
               const SizedBox(height: 20),
 
-              // LOGO WITH ERROR DEBUGGER
+              // LOGO
               SizedBox(
-                minHeight: 100,
+                height: 100,
                 width: double.infinity,
                 child: Image.asset(
                   'Logo.png',
                   fit: BoxFit.contain,
                   errorBuilder: (context, error, stackTrace) {
-                    return ImageErrorDebugWidget(
-                      imagePath: 'Logo.png',
-                      errorDetails: error.toString(),
+                    return const Center(
+                      child: Text(
+                        'CARCOS',
+                        style: TextStyle(
+                          color: Color(0xFF62B5E5),
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     );
                   },
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
               // MOBILE NUMBER INPUT
               Container(
@@ -270,62 +282,6 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// 3. IMAGE ERROR DEBUGGER WIDGET
-class ImageErrorDebugWidget extends StatelessWidget {
-  final String imagePath;
-  final String errorDetails;
-
-  const ImageErrorDebugWidget({
-    super.key,
-    required this.imagePath,
-    required this.errorDetails,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: const Color(0xFF2A1010),
-        border: Border.all(color: Colors.redAccent, width: 1.5),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Row(
-            children: [
-              Icon(Icons.warning_amber_rounded, color: Colors.redAccent, size: 20),
-              SizedBox(width: 6),
-              Text(
-                "IMAGE LOADING ERROR",
-                style: TextStyle(
-                  color: Colors.redAccent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            "File path: '$imagePath'",
-            style: const TextStyle(color: Colors.yellowAccent, fontSize: 11, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            "Error: $errorDetails",
-            style: const TextStyle(color: Colors.white70, fontSize: 10),
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
       ),
     );
   }
