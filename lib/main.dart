@@ -21,7 +21,7 @@ class CarcosApp extends StatelessWidget {
   }
 }
 
-// 1. SPLASH SCREEN (Local Asset Logo)
+// 1. SPLASH SCREEN
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -63,16 +63,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   '20261002_080144.png',
                   height: 120,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Text(
-                      'CARCOS',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    );
-                  },
                 ),
               ),
               const SizedBox(height: 40),
@@ -88,7 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-// 2. LOGIN SCREEN (Local Asset Logo)
+// 2. LOGIN SCREEN
 class CarcosLoginScreen extends StatefulWidget {
   const CarcosLoginScreen({super.key});
 
@@ -119,31 +109,19 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
               ),
               const SizedBox(height: 30),
 
-              // LOCAL BRAND LOGO
+              // LOGO
               SizedBox(
                 height: 100,
                 width: double.infinity,
                 child: Image.asset(
                   '20261002_080144.png',
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(
-                      child: Text(
-                        'CARCOS',
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    );
-                  },
                 ),
               ),
 
               const SizedBox(height: 50),
 
-              // PHONE INPUT FIELD
+              // MOBILE NUMBER INPUT
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF101216),
