@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: Image.asset(
-                  '20261002_080144.png',
+                  'Logo.png',
                   height: 120,
                   fit: BoxFit.contain,
                 ),
@@ -114,7 +114,7 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
                 height: 100,
                 width: double.infinity,
                 child: Image.asset(
-                  '20261002_080144.png',
+                  'Logo.png',
                   fit: BoxFit.contain,
                 ),
               ),
