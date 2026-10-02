@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 4), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
@@ -57,12 +57,17 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              SizedBox(
+                height: 120,
                 child: Image.asset(
                   'Logo.png',
-                  height: 120,
                   fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return ImageErrorDebugWidget(
+                      imagePath: 'Logo.png',
+                      errorDetails: error.toString(),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 40),
@@ -107,19 +112,25 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
                 alignment: Alignment.topRight,
                 child: Icon(Icons.help_outline, color: Colors.white70, size: 24),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
-              // LOGO
+              // LOGO WITH ERROR DEBUGGER
               SizedBox(
-                height: 100,
+                minHeight: 100,
                 width: double.infinity,
                 child: Image.asset(
                   'Logo.png',
                   fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return ImageErrorDebugWidget(
+                      imagePath: 'Logo.png',
+                      errorDetails: error.toString(),
+                    );
+                  },
                 ),
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 30),
 
               // MOBILE NUMBER INPUT
               Container(
@@ -143,6 +154,7 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
                         width: 22,
                         height: 15,
                         fit: BoxFit.cover,
+                        errorBuilder: (c, e, s) => const Text('🇮🇳', style: TextStyle(fontSize: 16)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -258,6 +270,62 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+// 3. IMAGE ERROR DEBUGGER WIDGET
+class ImageErrorDebugWidget extends StatelessWidget {
+  final String imagePath;
+  final String errorDetails;
+
+  const ImageErrorDebugWidget({
+    super.key,
+    required this.imagePath,
+    required this.errorDetails,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A1010),
+        border: Border.all(color: Colors.redAccent, width: 1.5),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Row(
+            children: [
+              Icon(Icons.warning_amber_rounded, color: Colors.redAccent, size: 20),
+              SizedBox(width: 6),
+              Text(
+                "IMAGE LOADING ERROR",
+                style: TextStyle(
+                  color: Colors.redAccent,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            "File path: '$imagePath'",
+            style: const TextStyle(color: Colors.yellowAccent, fontSize: 11, fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            "Error: $errorDetails",
+            style: const TextStyle(color: Colors.white70, fontSize: 10),
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }
