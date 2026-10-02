@@ -60,20 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 120,
                 child: Image.asset(
-                  'Logo.png',
+                  'assets/Logo.png',
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(
-                      child: Text(
-                        'CARCOS',
-                        style: TextStyle(
-                          color: Color(0xFF62B5E5),
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    );
-                  },
                 ),
               ),
               const SizedBox(height: 40),
@@ -120,25 +108,13 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
               ),
               const SizedBox(height: 20),
 
-              // LOGO
+              // LOGO (INSTANT ASSET LOAD)
               SizedBox(
                 height: 100,
                 width: double.infinity,
                 child: Image.asset(
-                  'Logo.png',
+                  'assets/Logo.png',
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(
-                      child: Text(
-                        'CARCOS',
-                        style: TextStyle(
-                          color: Color(0xFF62B5E5),
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    );
-                  },
                 ),
               ),
 
