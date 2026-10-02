@@ -19,4 +19,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - 20261002_080144.png
+    - Logo.png
