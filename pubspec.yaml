@@ -1,5 +1,5 @@
-name: arena_league
-description: "Esports Tournament App"
+name: carcos
+description: "CARCOS Esports Tournament App"
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -20,6 +20,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Asset section me logo image declare ki gayi hai
   assets:
     - assets/logo.png
