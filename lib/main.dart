@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const TournamentApp());
+  runApp(const CarcosApp());
 }
 
-class TournamentApp extends StatelessWidget {
-  const TournamentApp({super.key});
+class CarcosApp extends StatelessWidget {
+  const CarcosApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Arena League',
+      title: 'CARCOS Esports',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF090D16), // Premium dark background
+        scaffoldBackgroundColor: const Color(0xFF0D0F12),
       ),
       home: const LoginScreen(),
     );
@@ -35,13 +35,12 @@ class _LoginScreenState extends State<LoginScreen>
   @override
   void initState() {
     super.initState();
-    // Animated Pulse Effect for Logo
     _glowController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
 
-    _glowAnimation = Tween<double>(begin: 15.0, end: 35.0).animate(
+    _glowAnimation = Tween<double>(begin: 12.0, end: 28.0).animate(
       CurvedAnimation(parent: _glowController, curve: Curves.easeInOut),
     );
   }
@@ -62,89 +61,66 @@ class _LoginScreenState extends State<LoginScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // 🏆 ANIMATED GLOW LOGO CONTAINER
+                // 🏆 CARCOS LOGO CONTAINER
                 AnimatedBuilder(
                   animation: _glowAnimation,
                   builder: (context, child) {
                     return Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28, vertical: 18),
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: const Color(0xFF1E293B).withOpacity(0.6),
+                        color: const Color(0xFF161B22),
+                        borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.amber.withOpacity(0.4),
+                            color: const Color(0xFF38BDF8).withOpacity(0.35),
                             blurRadius: _glowAnimation.value,
-                            spreadRadius: 2,
+                            spreadRadius: 1,
                           ),
                         ],
                         border: Border.all(
-                          color: Colors.amber.withOpacity(0.6),
+                          color: const Color(0xFF38BDF8).withOpacity(0.5),
                           width: 1.5,
                         ),
                       ),
                       child: child,
                     );
                   },
-                  // 📍 IS PLACE PAR AAPKA LOGO IMAGE PATH LAGAYA HAI:
                   child: Image.asset(
-                    'assets/logo.png', // Main path (Flutter auto 2.0x/3.0x load karega)
-                    height: 90,
-                    width: 90,
+                    'assets/logo.png',
+                    height: 55,
                     fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.emoji_events_rounded,
-                      size: 80,
-                      color: Colors.amber,
+                    errorBuilder: (context, error, stackTrace) => const Text(
+                      'CARCOS',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF38BDF8),
+                      ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 36),
 
-                // BRANDING TITLE
-                ShaderMask(
-                  shaderCallback: (bounds) => const LinearGradient(
-                    colors: [Colors.amber, Colors.orangeAccent],
-                  ).createShader(bounds),
-                  child: const Text(
-                    'ARENA LEAGUE',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.black,
-                      letterSpacing: 3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  'Compete. Win. Dominate.',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 13,
-                    letterSpacing: 1.1,
-                  ),
-                ),
-
-                const SizedBox(height: 40),
-
-                // USERNAME / EMAIL FIELD
+                // EMAIL / USERNAME FIELD
                 TextField(
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    hintText: 'Enter Email / Game ID',
-                    hintStyle: TextStyle(color: Colors.grey.shade500),
-                    prefixIcon: const Icon(Icons.sports_esports, color: Colors.amber),
+                    hintText: 'Email or Player ID',
+                    hintStyle: TextStyle(color: Colors.grey.shade600),
+                    prefixIcon:
+                        const Icon(Icons.sports_esports, color: Color(0xFF38BDF8)),
                     filled: true,
-                    fillColor: const Color(0xFF131C2E),
+                    fillColor: const Color(0xFF161B22),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(color: Colors.white.withOpacity(0.08)),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide:
+                          BorderSide(color: Colors.white.withOpacity(0.08)),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(color: Colors.amber),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: Color(0xFF38BDF8)),
                     ),
                   ),
                 ),
@@ -156,50 +132,36 @@ class _LoginScreenState extends State<LoginScreen>
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.grey.shade500),
-                    prefixIcon: const Icon(Icons.lock_outline, color: Colors.amber),
+                    hintStyle: TextStyle(color: Colors.grey.shade600),
+                    prefixIcon:
+                        const Icon(Icons.lock_outline, color: Color(0xFF38BDF8)),
                     filled: true,
-                    fillColor: const Color(0xFF131C2E),
+                    fillColor: const Color(0xFF161B22),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(color: Colors.white.withOpacity(0.08)),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide:
+                          BorderSide(color: Colors.white.withOpacity(0.08)),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(color: Colors.amber),
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: Color(0xFF38BDF8)),
                     ),
                   ),
                 ),
                 const SizedBox(height: 24),
 
-                // LOGIN BUTTON WITH GOLDEN GRADIENT
-                Container(
+                // ENTER ARENA BUTTON
+                SizedBox(
                   width: double.infinity,
-                  height: 52,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFFFFB703), Color(0xFFFB8500)],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.orange.withOpacity(0.3),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
+                  height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
+                      backgroundColor: const Color(0xFF38BDF8),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () {
-                      // Navigate to Home Screen
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'ENTER ARENA',
                       style: TextStyle(
