@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CarApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CarApp extends StatelessWidget {
+  const CarApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Fantasy App',
+      title: 'CARCOS',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF0F0F0F),
       ),
@@ -38,13 +38,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Stadium Graphics Accent
+          // Background Stadium Accent
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
             child: Container(
-              height: size.height * 0.45,
+              height: size.height * 0.42,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -59,21 +59,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.center,
                 children: [
                   Positioned(
-                    top: 20,
-                    child: Container(
-                      width: 80,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.amber.withOpacity(0.15),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                  Positioned(
                     bottom: 0,
                     child: Container(
                       width: size.width,
-                      height: 120,
+                      height: 100,
                       color: const Color(0xFFB30000).withOpacity(0.8),
                     ),
                   ),
@@ -82,14 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
 
-          // Main Content Layer
+          // Main Content
           SafeArea(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Column(
                 crossAxisAlignment: CrossAlignment.center,
                 children: [
-                  // Top Help Icon
                   Align(
                     alignment: Alignment.topRight,
                     child: IconButton(
@@ -98,19 +86,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
 
-                  // Custom App Logo (Replaces Dream11 Logo)
+                  // App Logo from Assets (Fallback Text if Image fails)
                   Image.asset(
                     'assets/logo.png',
-                    height: 55,
+                    height: 60,
                     errorBuilder: (context, error, stackTrace) {
                       return const Text(
-                        'MY APP',
+                        'CARCOS',
                         style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          fontWeight: FontWeight.black,
                           color: Colors.white,
+                          letterSpacing: 2,
                         ),
                       );
                     },
@@ -118,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 35),
 
-                  // Phone Input Field
+                  // Phone Number Input (+91)
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white38),
@@ -155,9 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 15),
 
-                  // Terms & Conditions Checkbox
+                  // 18+ Terms Checkbox
                   Row(
-                    crossAxisAlignment: CrossAlignment.start,
+                    crossAlignment: CrossAlignment.start,
                     children: [
                       SizedBox(
                         height: 24,
@@ -225,14 +214,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 20),
 
-                  // Divider OR text
+                  // Divider
                   const Row(
                     children: [
                       Expanded(child: Divider(color: Colors.white24, thickness: 1)),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12),
-                        style: TextStyle(color: Colors.white54, fontSize: 13),
-                        child: Text('or'),
+                        child: Text('or', style: TextStyle(color: Colors.white54, fontSize: 13)),
                       ),
                       Expanded(child: Divider(color: Colors.white24, thickness: 1)),
                     ],
