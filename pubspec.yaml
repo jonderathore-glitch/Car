@@ -1,5 +1,5 @@
 name: car
-description: "A new Flutter project."
+description: "Fantasy Esports App"
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -21,4 +21,3 @@ flutter:
 
   assets:
     - assets/logo.png
-    
