@@ -36,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // 3 Seconds timer to navigate to Login Screen
     Timer(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
@@ -145,31 +144,21 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
             children: [
               const SizedBox(height: 10),
 
-              // CARCOS LOGO & HEADER
-              Center(
+              // CARCOS TEXT LOGO
+              const Center(
                 child: Column(
                   children: [
-                    Image.asset(
-                      'assets/logo.png',
-                      height: 60,
-                      fit: BoxFit.contain,
-                      errorBuilder: (context, error, stackTrace) => Image.asset(
-                        'assets/Logo.png',
-                        height: 60,
-                        fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) => const Text(
-                          'CARCOS',
-                          style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.black,
-                            color: Color(0xFF38BDF8),
-                            letterSpacing: 3,
-                          ),
-                        ),
+                    Text(
+                      'CARCOS',
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.black,
+                        color: Color(0xFF38BDF8),
+                        letterSpacing: 3,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
+                    SizedBox(height: 8),
+                    Text(
                       'Play Esports & Win Real Cash',
                       style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
                     ),
@@ -294,7 +283,7 @@ class _CarcosLoginScreenState extends State<CarcosLoginScreen> {
 
               const Spacer(),
 
-              // FOOTER / GOOGLE LOGIN
+              // GOOGLE LOGIN BUTTON
               Center(
                 child: Column(
                   children: [
@@ -436,22 +425,12 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF121418),
         elevation: 0,
-        title: Image.asset(
-          'assets/logo.png',
-          height: 32,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => Image.asset(
-            'assets/Logo.png',
-            height: 32,
-            fit: BoxFit.contain,
-            errorBuilder: (context, error, stackTrace) => const Text(
-              'CARCOS',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF38BDF8),
-              ),
-            ),
+        title: const Text(
+          'CARCOS',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF38BDF8),
           ),
         ),
         actions: [
@@ -487,7 +466,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAlignment.start,
+          crossAlignment: CrossAlignment.start,
           children: [
             Row(
               children: [
